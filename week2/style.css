@@ -59,7 +59,7 @@ nav a:hover {
     background-color: #505050;  /* Darker shade for hover */
 }
 
-nav .active {
+nav .activepage {
     color:#a80fb7;
 }
 
