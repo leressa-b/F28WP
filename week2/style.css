@@ -60,7 +60,7 @@ nav a:hover {
 }
 
 nav .activepage {
-    color:#a80fb7;
+    color:#f0a0f8;
 }
 
 /* Banner Styles */
@@ -149,6 +149,10 @@ main h3 {
     border: 1px solid #a80fb7;
     font-size: large;
     font-weight: 550;
+}
+
+.cta-title {
+    text-transform: uppercase;
 }
 
 .cta-button {
