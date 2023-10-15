@@ -19,6 +19,33 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
   </style>
+  <script>
+
+    var slideNumber=1;
+
+    function incSlide() {
+      currSlide(slideNumber+=1);
+    }
+    function decSlide() {
+      currSlide(slideNumber-=1);
+    }
+
+    function currSlide(n) {
+      var slides = document.getElementsByCLassName("mySLides");
+      if (n>slides.length)  {
+        currSlide(1);
+      }
+      else if (n<1) {
+        currSlide(slides.length);
+      }
+      else {
+        for (var i=0;i<slides.length;i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideNumber-1].style.display = "block";
+      }
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -40,73 +67,51 @@
   <main class="services">
       <h1>Gallery</h1>
 
-
-    
     <div class="container">
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 1</p>
-          <a class = "previous" href="img/pic8.png">Previous</a>
-          <img src="img/pic1.png" alt="Spa Image 1">
-          <a class = "next" href="img/pic2.png">Next</a>
-        </div>
+        <div class="numbertext">1 / 8</div>
+        <img src="img/pic1.png" alt="Spa Image 1">
       </div>
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 2</p>
-          <a class = "previous" href="img/pic1.png">Previous</a>
-          <img src="img/pic2.png" alt="Spa Image 2">
-          <a class = "next" href="img/pic3.png">Next</a>
-        </div>
+        <div class="numbertext">2 / 8</div>
+        <img src="img/pic2.png" alt="Spa Image 2">
       </div>
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 3</p>
-          <a class = "previous" href="img/pic2.png">Previous</a>
-          <img src="img/pic3.png" alt="Spa Image 3">
-          <a class = "next" href="img/pic4.png">Next</a>
-        </div>
+        <div class="numbertext">3 / 8</div>
+        <img src="img/pic3.png" alt="Spa Image 3">
       </div>
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 4</p>
-          <a class = "previous" href="img/pic3.png">Previous</a>
-          <img src="img/pic4.png" alt="Spa Image 4">
-          <a class = "next" href="img/pic5.png">Next</a>
-        </div>
+        <div class="numbertext">4 / 8</div>
+        <img src="img/pic4.png" alt="Spa Image 4">
       </div>
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 5</p>
-          <a class = "previous" href="img/pic4.png">Previous</a>
+        <div class="numbertext">5 / 8</div>
           <img src="img/pic5.png" alt="Spa Image 5">
-          <a class = "next" href="img/pic6.png">Next</a>
-        </div>
       </div>
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 6</p>
-          <a class = "previous" href="img/pic5.png">Previous</a>
+        <div class="numbertext">6 / 8</div>
           <img src="img/pic6.png" alt="Spa Image 6">
-          <a class = "next" href="img/pic7.png">Next</a>
-        </div>
       </div>
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 7</p>
-          <a class = "previous" href="img/pic6.png">Previous</a>
-          <img src="img/pic7.png" alt="Spa Image 7">
-          <a class = "next" href="img/pic8.png">Next</a>
-        </div>
+        <div class="numbertext">7 / 8</div>
+        <img src="img/pic7.png" alt="Spa Image 7">
       </div>
+
       <div class="mySlides">
-        <div class="numbertext">
-          <p>Slide Number 8</p>
-          <a class = "previous" href="img/pic7.png">Previous</a>
-          <img src="img/pic8.png" alt="Spa Image 8">
-          <a class = "next" href="img/pic1.png">Next</a>
-        </div>
+        <div class="numbertext">8 / 8</div>
+        <img src="img/pic8.png" alt="Spa Image 8">
       </div>
+      
+      <a class="prev" onclick="decSlide()">Previous</a>
+      <a class="next" onclick="incSlide()">Next</a>
+
     </div>
 
    <!-- Call to Action -->
