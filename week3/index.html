@@ -28,10 +28,30 @@
     </ul>
     </nav>
 
-    <!-- Banner Section -->
-    <section class="banner-container">
-      <img src="img/travel banner.svg" alt="Illustrative banner of travel destinations" class="centered-banner">
+    <!-- Slider Section -->
+    <section class="slider-container">
+      <img name="slide" alt="Travel Images Slider" title="Travel Destinations" width="60%" />
     </section>
+
+    <script>
+
+      let slideIndex = 0; 
+      const images = [];
+      const timeInterval = 2500;
+
+      images.push("img/pic1.png", "img/pic2.png", "img/pic3.png","img/pic4.png", "img/pic5.png", "img/pic6.png", "img/pic7.png", "img/pic8.png");
+
+      function changeImg() {
+        const showSlide = document.querySelector('[name="slide"]');
+        showSlide.src = images[slideIndex];
+        slideIndex = (slideIndex + 1) % images.length;
+      }
+
+      setInterval(changeImg, timeInterval);
+
+      window.addEventListener("load", changeImg);
+
+    </script>
 
     <!-- Main Content Section -->
     <main class="services">
