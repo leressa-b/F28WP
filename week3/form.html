@@ -4,83 +4,13 @@
   <meta charset="UTF-8">
   <title>Registration Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    /* Style for the form: setting width, auto margin for centering, padding, 
-    background color, border radius for rounded corners, and font size */
-    #form {
-    width: 300px;
-    margin: 20vh auto 0 auto; /* This centers the form vertically and 
-    horizontally */
-    padding: 20px;
-    background-color: #add2c5; /* Green background for the form */
-    border-radius: 4px; /* Rounded corners for the form */
-    font-size: 12px;
-    font-family: arial;
-    }
-    /* Style for the form's heading: setting the text color and alignment */
-    #form h1 {
-    color: #2b3b3b; /* Dark text color for the heading */
-    text-align: center; /* Center-align the heading */
-    }
-    /* Style for the form's button: padding, top margin, full width, text color, 
-    background color, no border, and rounded corners */
-    #form button {
-    padding: 10px;
-    margin-top: 8px; /* Space above the button */
-    width: 100%; /* Make the button expand the full width of the form */
-    color: white; /* White text color for the button */
-    background-color: #445c5c; /* Dark green background color for the button 
-    */
-    border: none; /* Remove the default border */
-    border-radius: 4px; /* Rounded corners for the button */
-    }
-    /* Container for input fields: using flexbox for layout, column direction */
-    .input-control {
-        display: flex;
-        flex-direction: column; /* Stack the children (label, input, error message) vertically */
-        padding:10px 30px 10px 10px; 
-    }
-    /* Style for input fields inside the container: border style, rounded corners, 
-    block-level display, font size, padding, full width */
-    .input-control input {
-    border: 1px solid #000000; /* Light gray border for the inputs */
-    border-radius: 4px; /* Rounded corners for the inputs */
-    display: block; /* Display input field as a block */
-    font-size: 12px; /* Text size within the input field */
-    padding: 8px; /* Space inside the input field */
-    width: 100%; /* Input field takes up 100% of the form's width */
-    margin-top: 3px;
-    margin-bottom: 3px;
-    }
-    /* Remove focus outline from input fields */
-    .input-control input:focus {
-    outline: 0; /* Remove outline when input is focused */
-    }
-    /* Style for input fields with class "success": green border */
-    .input-control.success input {
-    border-color: #09c372; /* Green border to indicate successful input */
-    }
-    /* Style for input fields with class "error": red border */
-    .input-control .error input {
-    border-color: #ff3860; /* Red border to indicate an error in input */
-    }
-    /* Style for the error message: text color, font size, and height */
-    .input-control .error {
-    color: #ff3860; /* Red text color for error messages */
-    font-size: 9px; /* Smaller font size for error messages */
-    height: 20px; /* Explicit height to ensure consistent spacing */
-    }
-
-    li {
-        list-style: none;
-    }
-
-    </style>
-
+  <link rel="stylesheet" href="form.css">
 </head>
 
 <body>
+
+    <!-- Registration Form -->
+
     <form id="form">
         <h1> Registration Form </h1>
             <ul class="input-control">
@@ -105,76 +35,87 @@
                     <div class="error" id="confirmError"></div>
                 </li>
             </ul>
+
+            <!-- Submission button -->
             <button type="submit">Submit</button>
             
     </form>
 
+    <!-- Javascript for the form submission -->
+
     <script>
+
+        // storing the inputs
 
         const uname_Field = document.querySelector('[name="uname"]');
         const email_Field = document.querySelector('[name="email"]');
         const password_Field = document.querySelector('[name="password"]');
         const confirm_Field = document.querySelector('[name="confirm"]');
 
+        //storing the elements based on errors
+
         const uname_Error = document.getElementById("unameError");
         const email_Error = document.getElementById("emailError");
         const password_Error = document.getElementById("passwordError");
         const confirm_Error = document.getElementById("confirmError");
 
+
+        // storing the form in a variable 'form' and adding an event 'submit'
+
         const form = document.getElementById("form");
         form.addEventListener("submit",validateForm);
 
 
+        //function to check if the form is valid
+
         function validateForm() {
-        let valid = true;
+        let check = true;
         
-        if (uname_Field.value === "") {
-        valid = false;
-        uname_Error.textContent = "Please enter a username.";
+        // checks if username is valid
+        if (uname_Field.value === "") { // must not be empty
+            check = false;
+            uname_Error.textContent = "Please enter a username.";
         }
         
-        if (email_Field.value === "") {
-        valid = false;
-        email_Error.textContent = "Please enter an email address.";
+        // checks if email is valid
+        if (email_Field.value === "") {  // must not be empty
+            check = false;
+            email_Error.textContent = "Please enter an email address.";
         } 
-        else if (!email_Field.value.endsWith("@gmail.com")) 
-        { valid = false;
-        email_Error.textContent = "Please use a gmail address.";
+        else if (!email_Field.value.endsWith("@gmail.com")) {  // must be a valid gmail address
+            check = false;
+            email_Error.textContent = "Please use a gmail address.";
         }
         
-        
-        if (password_Field.value === "") {
-        valid = false;
-        password_Error.textContent = "Please enter a password.";
+        // checks if password is valid
+        if (password_Field.value === "") { // must not be empty
+            check = false;
+            password_Error.textContent = "Please enter a password.";
         } 
-        else if (password_Field.value.length < 8)
-        { valid = false;
-        password_Error.textContent = "Password must be atleast 8 characters in length";
-        } 
-        
-        
-        if (confirm_Field.value === "") {
-        valid = false;
-        confirm_Error.textContent = "Please confirm your password.";
-        } 
-        else if (confirm_Field.value != password_Field.value)
-        { valid = false;
-        confirm_Error.textContent = "Passwords do not match.";
+        else if (password_Field.value.length < 8) {  // must have atleast 8 characters
+            check = false;
+            password_Error.textContent = "Password must be atleast 8 characters in length";
         } 
         
+        // checks if confirm password is valid
+        if (confirm_Field.value === "") {  // must not be empty
+            check = false;
+            confirm_Error.textContent = "Please confirm your password.";
+        } 
+        else if (confirm_Field.value != password_Field.value) {  // password must match
+            check = false;
+            confirm_Error.textContent = "Passwords do not match.";
+        } 
         
-        if (valid) {
-            alert("User Registration Completed!");
+
+        if (check) {
+            alert("User Registration Completed!"); // if everything is valid, submits and gives an alert
         } 
         else {
-            event.preventDefault();
+            event.preventDefault(); // prevents reload if not valid
         }
         }
     
-    
-
-        
-        
     </script>
 
 
