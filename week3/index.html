@@ -33,23 +33,26 @@
       <img name="slide" alt="Travel Images Slider" title="Travel Destinations" width="60%" />
     </section>
 
+    <!-- JavaScript for Slider-->
     <script>
 
-      let slideIndex = 0; 
-      const images = [];
-      const timeInterval = 2500;
-
+      let slideIndex = 0;           // refers to the slide number
+      const images = [];            // declaring an empty array
+      const timeInterval = 2500;    // the time interval between the slides is 2500 m.s
+      
+      // pushing images from the gallery into the empty array
       images.push("img/pic1.png", "img/pic2.png", "img/pic3.png","img/pic4.png", "img/pic5.png", "img/pic6.png", "img/pic7.png", "img/pic8.png");
 
+      // function to change the source of the images
       function changeImg() {
-        const showSlide = document.querySelector('[name="slide"]');
+        const showSlide = document.querySelector('[name="slide"]');  // 'showSlide' stores elements with name 'slide'
         showSlide.src = images[slideIndex];
-        slideIndex = (slideIndex + 1) % images.length;
+        slideIndex = (slideIndex + 1) % images.length; // incrementing the index and returning to the first slide on reaching the end
       }
 
-      setInterval(changeImg, timeInterval);
+      setInterval(changeImg, timeInterval); // Images will change every 2500 m.s
 
-      window.addEventListener("load", changeImg);
+      window.addEventListener("load", changeImg); // calling function 'changeImg' when page loads
 
     </script>
 
