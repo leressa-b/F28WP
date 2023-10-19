@@ -105,11 +105,20 @@
                     <div class="error" id="confirmError"></div>
                 </li>
             </ul>
-            <button type="submit">Submit</button>
+            <button type="submit" onclick="closeForm()">Submit</button>
             
     </form>
 
     <script>
+
+        function openForm() {
+            document.getElementById("form").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("form").style.display = "none";
+        }
+
 
         const uname_Field = document.querySelector('[name="uname"]');
         const email_Field = document.querySelector('[name="email"]');
