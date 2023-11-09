@@ -35,4 +35,7 @@ htmlString += '.</p>';
 }
 cityContainer.insertAdjacentHTML('beforeend' , htmlString);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01b5720ba767cd54aee61df18c2b0afbcb63abb7
